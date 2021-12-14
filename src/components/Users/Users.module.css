@@ -1,0 +1,13 @@
+.users__cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.card__img {
+    width: 100%;    
+}

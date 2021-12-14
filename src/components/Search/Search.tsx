@@ -2,14 +2,14 @@ import { useState } from 'react'
 import styles from './Search.module.css'
 
 interface ISearch {
-    setName: React.Dispatch<React.SetStateAction<string>>
+    setSearchName: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const Search: React.FC<ISearch> = ({ setName }) => {
+export const Search: React.FC<ISearch> = ({ setSearchName }) => {
     let [inputValue, setInputValue] = useState('')
 
     const onSearchBtnClick = () => {
-        setName(inputValue)
+        setSearchName(inputValue)
     }
     
     return (
