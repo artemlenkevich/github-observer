@@ -1,0 +1,30 @@
+.modal {
+    position: fixed;
+    width: 500px;
+    top: 20%;
+    left: calc(50% - 250px);
+    background-color: rgb(236, 232, 232);
+    border-radius: 20px;
+}
+
+.modal__title {
+    padding: 10px 20px;
+}
+
+.form {
+    padding: 40px;
+}
+
+.form__field {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    display: block;
+    width: 100%;
+}
+
+.form__btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}

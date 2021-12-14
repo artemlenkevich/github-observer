@@ -1,8 +1,14 @@
+.list {
+    margin-top: 20px;
+}
+
 .repositories {
     margin-top: 50px;
 }
 
 .repository {
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }

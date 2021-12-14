@@ -25,6 +25,7 @@ export const GET_REPOSITORIES = gql`
                     watchers {
                         totalCount
                     }
+                    id
                 }
                 pageInfo {
                     hasNextPage
@@ -45,8 +46,21 @@ export const GET_REPOSITORY_ISSUES = gql`
                     }
                     createdAt
                     title
+                    id
                 }
             }
+            id
+        }
+    }
+`
+
+export const ADD_NEW_ISSUE = gql`
+    mutation AddNewIssue($id: String!, $title: String!, $body: String) {
+        createIssue(input: {repositoryId: $id, title: $title, body: $body}) {
+            issue {
+                number
+                body
+              }
         }
     }
 `

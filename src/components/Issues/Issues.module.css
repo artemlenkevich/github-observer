@@ -1,4 +1,25 @@
+.issues {
+    margin-top: 50px;
+}
+
 .issue {
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
+}
+
+.issues__container {
+    margin-top: 20px;
+}
+
+.issues__head {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.issues__newIssueBtn {
+    padding: 10px 20px;
+    cursor: pointer;
 }

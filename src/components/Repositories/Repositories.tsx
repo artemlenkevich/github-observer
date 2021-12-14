@@ -13,17 +13,22 @@ interface IRepository {
     watchers: {
       totalCount: number
     }
+    id: string
 
 }
 
 export const Repositories: React.FC<IRepositories> = ({ login, setActiveRepository }) => {
     const { data, loading, error } = useQuery(GET_REPOSITORIES, { variables: { login } })
 
-    if (loading) return <div>Loading...</div>
+    if (loading) return (
+        <div className={styles.repositories}>
+            <div>Loading...</div>
+        </div>
+    )
 
     let listOfRepositories = data.user.repositories.nodes.map((rep: IRepository) => {
         return (
-            <div className={styles.repository} onClick={() => setActiveRepository(rep.name)}>
+            <div key={rep.id} className={styles.repository} onClick={() => setActiveRepository(rep.name)}>
                 <div className={styles.repository__name}>{rep.name}</div>
                 <div className={styles.repository__properties}>{`${rep.stargazerCount} stars / ${rep.watchers.totalCount} watching`}</div>
             </div>
