@@ -18,7 +18,7 @@ interface IRepository {
 }
 
 export const Repositories: React.FC<IRepositories> = ({ login, setActiveRepository }) => {
-    const { data, loading, error } = useQuery(GET_REPOSITORIES, { variables: { login } })
+    const { data, loading } = useQuery(GET_REPOSITORIES, { variables: { login } })
 
     if (loading) return (
         <div className={styles.repositories}>
@@ -41,6 +41,7 @@ export const Repositories: React.FC<IRepositories> = ({ login, setActiveReposito
             <div className={styles.list}>
                 {listOfRepositories}
             </div>
+            
         </div>
     )
 }

@@ -19,7 +19,7 @@ interface IIssue {
 }
 
 export const Issues: React.FC<IIssues> = ({ owner, repositoryName, setRepositoryId }) => {
-    const { data, loading, error } = useQuery(GET_REPOSITORY_ISSUES, { variables: { name: repositoryName, owner } })
+    const { data, loading } = useQuery(GET_REPOSITORY_ISSUES, { variables: { name: repositoryName, owner } })
 
     if (loading) return (
         <div className={styles.issues}>
