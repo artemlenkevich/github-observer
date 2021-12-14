@@ -17,6 +17,8 @@ interface INode {
 
 export const Users: React.FC<IUsers> = ({ searchName, setActiveUserLogin }) => {
     const { data, loading, error } = useQuery(GET_USERS, { variables: { name: searchName } })
+    console.log(data);
+    
 
     if (loading) return <div>Loading...</div>
 

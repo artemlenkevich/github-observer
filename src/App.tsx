@@ -1,5 +1,5 @@
-import { logMissingFieldErrors } from "@apollo/client/core/ObservableQuery";
 import { useState } from "react";
+import { Repositories } from "./components/Repositories/Repositories";
 import { Search } from "./components/Search/Search";
 import { Users } from "./components/Users/Users";
 
@@ -16,6 +16,7 @@ function App() {
     <div>
       <Search setSearchName={setSearchName}/>
       {searchName && <Users searchName={searchName} setActiveUserLogin={setActiveUserLogin}/>}
+      {activeUserLogin && <Repositories login={activeUserLogin}/>}
     </div>
   )
 }

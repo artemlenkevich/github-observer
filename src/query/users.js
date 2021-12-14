@@ -15,4 +15,23 @@ export const GET_USERS = gql`
         }
     }
 `
+export const GET_REPOSITORIES = gql`
+    query GetRepositories($login: String!, $after: String) {
+        user(login: $login) {
+            repositories(first: 6, after: $after) {
+                nodes {
+                    name
+                    stargazerCount
+                    watchers {
+                        totalCount
+                    }
+                }
+                pageInfo {
+                    hasNextPage
+                    endCursor
+                }
+            }
+        }
+    }
+`
 

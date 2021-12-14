@@ -1,0 +1,8 @@
+.repositories {
+    margin-top: 50px;
+}
+
+.repository {
+    display: flex;
+    justify-content: space-between;
+}
