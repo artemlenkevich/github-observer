@@ -4,6 +4,7 @@ import styles from "./Repositories.module.css"
 
 interface IRepositories {
     login: string
+    setActiveRepository: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface IRepository {
@@ -15,20 +16,16 @@ interface IRepository {
 
 }
 
-export const Repositories: React.FC<IRepositories> = ({ login }) => {
+export const Repositories: React.FC<IRepositories> = ({ login, setActiveRepository }) => {
     const { data, loading, error } = useQuery(GET_REPOSITORIES, { variables: { login } })
-    console.log(login);
-    console.log(data);
-
-    // return <div></div>
 
     if (loading) return <div>Loading...</div>
 
     let listOfRepositories = data.user.repositories.nodes.map((rep: IRepository) => {
         return (
-            <div className={styles.repository}>
+            <div className={styles.repository} onClick={() => setActiveRepository(rep.name)}>
                 <div className={styles.repository__name}>{rep.name}</div>
-                <div className={styles.repository__properies}>{`${rep.stargazerCount} stars / ${rep.watchers.totalCount} watching`}</div>
+                <div className={styles.repository__properties}>{`${rep.stargazerCount} stars / ${rep.watchers.totalCount} watching`}</div>
             </div>
         )
     })    

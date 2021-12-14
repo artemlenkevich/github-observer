@@ -35,3 +35,19 @@ export const GET_REPOSITORIES = gql`
     }
 `
 
+export const GET_REPOSITORY_ISSUES = gql`
+    query GetRepositoryIssues($name: String!, $owner: String!, $after: String) {
+        repository(name: $name, owner: $owner) {
+            issues(first: 6, after: $after) {
+                nodes {
+                    author {
+                      login
+                    }
+                    createdAt
+                    title
+                }
+            }
+        }
+    }
+`
+
