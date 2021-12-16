@@ -14,19 +14,30 @@ interface IRepository {
       totalCount: number
     }
     id: string
+}
 
+interface RepositoryData {
+    user: {
+        repositories: {
+            nodes: Array<IRepository>
+        }
+    }
+}
+
+interface RepositoryVars {
+    login: string
 }
 
 export const Repositories: React.FC<IRepositories> = ({ login, setActiveRepository }) => {
-    const { data, loading } = useQuery(GET_REPOSITORIES, { variables: { login } })
+    const { data, loading } = useQuery<RepositoryData, RepositoryVars>(GET_REPOSITORIES, { variables: { login } })
 
-    if (loading) return (
+    if (loading || !data) return (
         <div className={styles.repositories}>
             <div>Loading...</div>
         </div>
     )
 
-    let listOfRepositories = data.user.repositories.nodes.map((rep: IRepository) => {
+    let listOfRepositories = data.user.repositories.nodes.map(rep => {
         return (
             <div key={rep.id} className={styles.repository} onClick={() => setActiveRepository(rep.name)}>
                 <div className={styles.repository__name}>{rep.name}</div>
@@ -41,7 +52,6 @@ export const Repositories: React.FC<IRepositories> = ({ login, setActiveReposito
             <div className={styles.list}>
                 {listOfRepositories}
             </div>
-            
         </div>
     )
 }
