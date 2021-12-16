@@ -12,7 +12,7 @@ function App() {
   let [activeRepository, setActiveRepository] = useState('')
   let [repositoryId, setRepositoryId] = useState('')
 
-  const clearPreviousState = () => {
+  const clearPreviousState = () => { 
     setActiveUserLogin('')
     setActiveRepository('')
     setRepositoryId('')
